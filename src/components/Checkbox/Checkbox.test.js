@@ -41,3 +41,29 @@ it('has a click event, surely', () => {
   wrapper.simulate('click')
   expect(wrapper.find('.checkbox').text()).toEqual('checked')
 })
+
+it('has an onChange callback', () => {
+  const mockCallback = jest.fn()
+
+  const wrapper = shallow(<Checkbox onChange={mockCallback} />)
+
+  wrapper.simulate('click')
+  wrapper.simulate('click')
+
+  expect(mockCallback.mock.calls.length).toBe(2)
+  expect(mockCallback.mock.calls[0][0].checked).toBeTruthy()
+  expect(mockCallback.mock.calls[1][0].checked).toBeFalsy()
+})
+
+it('has an onChange callback', () => {
+  const mockCallback = jest.fn()
+
+  const wrapper = shallow(<Checkbox checked={true} onChange={mockCallback} />)
+
+  wrapper.simulate('click')
+  wrapper.simulate('click')
+
+  expect(mockCallback.mock.calls.length).toBe(2)
+  expect(mockCallback.mock.calls[1][0].checked).toBeTruthy()
+  expect(mockCallback.mock.calls[0][0].checked).toBeFalsy()
+})

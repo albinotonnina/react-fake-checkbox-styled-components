@@ -4,6 +4,21 @@ import './App.css'
 import Checkbox from './components/Checkbox'
 
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      checks: []
+    }
+  }
+
+  onChange = checkbox => {
+    const ischecked = checkbox.checked
+    this.setState({
+      checks: [...this.state.checks, ischecked]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,8 +27,14 @@ class App extends Component {
           <h1 className="App-title">Fake checkbox component</h1>
         </header>
         <div>
-          <Checkbox label="Hello!" />
+          <Checkbox label="Hello!" onChange={this.onChange} />
         </div>
+
+        <ul>
+          {this.state.checks.map((check, index) => {
+            return <li key={index}>{check ? 'checked' : 'not checked'}</li>
+          })}
+        </ul>
       </div>
     )
   }

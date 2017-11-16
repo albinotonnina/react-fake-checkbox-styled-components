@@ -12,7 +12,9 @@ class Checkbox extends Component {
   }
 
   onClick = () => {
-    this.setState({ checked: !this.state.checked })
+    this.setState({ checked: !this.state.checked }, () => {
+      this.props.onChange({checked: this.state.checked})
+    })
   }
 
   render() {
@@ -34,11 +36,13 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool
+  checked: PropTypes.bool,
+  onChange: PropTypes.func
 }
 
 Checkbox.defaultProps = {
-  checked: false
+  checked: false,
+  onChange: () => {}
 }
 
 export default Checkbox
