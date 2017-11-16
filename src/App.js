@@ -12,7 +12,7 @@ class App extends Component {
           <h1 className="App-title">Fake checkbox component</h1>
         </header>
         <div>
-          <Checkbox />
+          <Checkbox label="Hello!" />
         </div>
       </div>
     )
