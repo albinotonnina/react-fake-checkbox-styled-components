@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Checkbox extends Component {
-
-    render() {
-
-        const checked = false;
-
-        return (
-            <div className="checkbox">
-                {checked?'checked':'not checked'}
-            </div>
-        );
-    }
+  render() {
+    const { checked } = this.props
+    return <div className="checkbox">{checked ? 'checked' : 'not checked'}</div>
+  }
 }
 
-export default Checkbox;
+Checkbox.propTypes = {
+  checked: PropTypes.bool
+}
+
+Checkbox.defaultProps = {
+  checked: false
+}
+
+export default Checkbox

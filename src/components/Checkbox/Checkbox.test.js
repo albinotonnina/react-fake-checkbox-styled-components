@@ -7,3 +7,9 @@ it('renders not checked by default', () => {
 
   expect(wrapper.find('.checkbox').text()).toEqual('not checked')
 })
+
+it('renders not checked by default', () => {
+    const wrapper = shallow(<Checkbox checked={true} />)
+
+    expect(wrapper.find('.checkbox').text()).toEqual('checked')
+})
