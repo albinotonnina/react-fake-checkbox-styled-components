@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const Label = styled.label`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`
 
 class Checkbox extends Component {
   constructor(props) {
@@ -13,7 +20,7 @@ class Checkbox extends Component {
 
   onClick = () => {
     this.setState({ checked: !this.state.checked }, () => {
-      this.props.onChange({checked: this.state.checked})
+      this.props.onChange({ checked: this.state.checked })
     })
   }
 
@@ -27,9 +34,9 @@ class Checkbox extends Component {
           {checked ? 'checked' : 'not checked'}
         </span>
 
-        <label className="label" htmlFor={id}>
+        <Label className="label" htmlFor={id}>
           {label}
-        </label>
+        </Label>
       </div>
     )
   }
