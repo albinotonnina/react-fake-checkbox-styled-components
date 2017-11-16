@@ -3,8 +3,17 @@ import PropTypes from 'prop-types'
 
 class Checkbox extends Component {
   render() {
-    const { checked } = this.props
-    return <div className="checkbox">{checked ? 'checked' : 'not checked'}</div>
+    const { id, checked, label } = this.props
+
+    return (
+      <div>
+        <span id={id} className="checkbox">{checked ? 'checked' : 'not checked'}</span>
+
+        <label className="label" htmlFor={id}>
+          {label}
+        </label>
+      </div>
+    )
   }
 }
 
