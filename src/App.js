@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import styled from 'styled-components'
+import { theme } from 'styled-system'
 import Checkbox from './components/Checkbox'
+
+const Container = styled.div`
+  color: ${theme('colors.neutralPrimary')};
+  padding: ${theme('space.md')};
+`
+
+const Ul = styled.ul`
+  display: flex;
+  padding: 0;
+`
+
+const Li = styled.li`
+  list-style-type: none;
+`
 
 class App extends Component {
   constructor() {
@@ -21,21 +35,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Fake checkbox component</h1>
+      <Container>
+        <header>
+          <h1>Fake checkbox component</h1>
         </header>
         <div>
           <Checkbox label="Hello!" onChange={this.onChange} />
         </div>
 
-        <ul>
+        <Ul>
           {this.state.checks.map((check, index) => {
-            return <li key={index}>{check ? 'checked' : 'not checked'}</li>
+            return <Li key={index}>{check ? 'X' : 'O'}</Li>
           })}
-        </ul>
-      </div>
+        </Ul>
+      </Container>
     )
   }
 }

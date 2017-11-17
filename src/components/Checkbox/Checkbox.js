@@ -1,12 +1,40 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { theme } from 'styled-system'
+import Icon from '../Icon'
 
-const Label = styled.label`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
+const Container = styled.div`
+  display: flex;
+  user-select: none;
 `
+
+Container.displayName = 'Container';
+
+const Label = styled.span`
+  margin-left: ${theme('space.xs')};
+  font-size: ${theme('fontSizes.md')};
+`
+
+Label.displayName = 'Label';
+
+const Check = styled.div`
+  width: ${theme('space.md')};
+  height: ${theme('space.md')};
+`
+
+Check.displayName = 'Check';
+
+
+const CheckIcon = styled(Icon)`
+  width: ${theme('space.md')};
+  height: ${theme('space.md')};
+
+  fill: ${({ checked }) =>
+    checked ? theme('colors.themePrimary') : theme('colors.neutralTertiary')};
+`
+
+CheckIcon.displayName = 'CheckIcon';
 
 class Checkbox extends Component {
   constructor(props) {
@@ -29,15 +57,15 @@ class Checkbox extends Component {
     const { checked } = this.state
 
     return (
-      <div onClick={this.onClick}>
-        <span id={id} className="checkbox">
-          {checked ? 'checked' : 'not checked'}
-        </span>
+      <Container id={id} onClick={this.onClick}>
+        <Check>
+          <CheckIcon icon={checked ? 'checkbox_checked' : 'checkbox_unchecked'} checked={checked} />
+        </Check>
 
         <Label className="label" htmlFor={id}>
           {label}
         </Label>
-      </div>
+      </Container>
     )
   }
 }

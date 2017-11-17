@@ -1,45 +1,55 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import Checkbox from './Checkbox'
 
 it('renders not checked by default', () => {
   const wrapper = shallow(<Checkbox />)
 
-  expect(wrapper.find('.checkbox').text()).toEqual('not checked')
+  expect(wrapper.state('checked')).toBeFalsy()
 })
 
-it('renders not checked by default', () => {
+it('renders checked', () => {
   const wrapper = shallow(<Checkbox checked={true} />)
 
-  expect(wrapper.find('.checkbox').text()).toEqual('checked')
+  expect(wrapper.state('checked')).toBeTruthy()
 })
 
 it('renders an empty label by default', () => {
   const wrapper = shallow(<Checkbox />)
 
-  expect(wrapper.find('.label').text()).toEqual('')
+  expect(
+    wrapper
+      .find('Label')
+      .childAt(0)
+      .text()
+  ).toEqual('')
 })
 
 it('renders a label', () => {
   const wrapper = shallow(<Checkbox label="some label" />)
 
-  expect(wrapper.find('.label').text()).toEqual('some label')
+  expect(
+    wrapper
+      .find('Label')
+      .childAt(0)
+      .text()
+  ).toEqual('some label')
 })
 
 it('has a click event', () => {
   const wrapper = shallow(<Checkbox />)
-  expect(wrapper.find('.checkbox').text()).toEqual('not checked')
+  expect(wrapper.state('checked')).toBeFalsy()
   wrapper.simulate('click')
-  expect(wrapper.find('.checkbox').text()).toEqual('checked')
+  expect(wrapper.state('checked')).toBeTruthy()
 })
 
 it('has a click event, surely', () => {
   const wrapper = shallow(<Checkbox checked={true} />)
-  expect(wrapper.find('.checkbox').text()).toEqual('checked')
+  expect(wrapper.state('checked')).toBeTruthy()
   wrapper.simulate('click')
-  expect(wrapper.find('.checkbox').text()).toEqual('not checked')
+  expect(wrapper.state('checked')).toBeFalsy()
   wrapper.simulate('click')
-  expect(wrapper.find('.checkbox').text()).toEqual('checked')
+  expect(wrapper.state('checked')).toBeTruthy()
 })
 
 it('has an onChange callback', () => {
