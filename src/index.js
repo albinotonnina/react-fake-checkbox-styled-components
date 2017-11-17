@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import registerServiceWorker from './registerServiceWorker'
 import { ThemeProvider } from 'styled-components'
-import theme from './theme'
+import theme from './system/theme'
 
 
 ReactDOM.render(
@@ -13,4 +12,3 @@ ReactDOM.render(
   </ThemeProvider>,
   document.getElementById('root')
 )
-registerServiceWorker()

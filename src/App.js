@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <Container>
         <header>
-          <h1>Fake checkbox component</h1>
+          <h1>React label + checkbox</h1>
         </header>
         <div>
           <Checkbox label="Hello!" onChange={this.onChange} />

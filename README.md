@@ -1,6 +1,6 @@
-## React fake Checkbox UI Component
+## React label + checkbox
 
-Playing with Styled Components, design system ideas and a Checkbox UI Component that doesn't use an actual input type=checkbox
+Experimenting with Styled Components, design system ideas and a Checkbox UI Component that doesn't use an actual input type=checkbox
 
 ## Installation
 
